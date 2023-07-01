@@ -4,12 +4,12 @@ module.exports = {
 		"eslint:recommended",
 		"plugin:react/recommended",
 		"plugin:react-hooks/recommended",
-		"plugin:import/recommended",
 		"plugin:jsx-a11y/recommended",
 		"plugin:@typescript-eslint/recommended",
 		"eslint-config-prettier",
-		"plugin:import/typescript",
-		"react-app"
+		"react-app",
+		"plugin:import/recommended",
+		"plugin:import/typescript"
 	],
 	parser: "@typescript-eslint/parser",
 	parserOptions: { ecmaVersion: "latest", sourceType: "module" },
@@ -20,7 +20,8 @@ module.exports = {
 		},
 		"import/resolver": {
 			node: {
-				extensions: [".js", ".jsx", ".ts", ".tsx", ".svg"]
+				extensions: [".js", ".jsx", ".ts", ".tsx", ".svg"],
+				paths: ["src"]
 			}
 		}
 	},
