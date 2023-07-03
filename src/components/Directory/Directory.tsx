@@ -2,6 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { headerRoutes } from "../../navigation/router";
 import { StyleAttribute, css } from "glamor";
 import { theme } from "../../styles/colourPalette";
+import { FooterDirectory } from "../FooterDirectory/FooterDirectory";
 
 type DirectoryProps = {
 	linkStyle?: StyleAttribute;
@@ -16,31 +17,28 @@ export const Directory = (props: DirectoryProps) => {
 			className={props.className}
 			role="navigation"
 			aria-label={props.className}
-			style={{
-				width: "30%",
-				display: "flex",
-				justifyContent: "space-around",
-				alignItems: "center"
-			}}
 		>
-			{Object.entries(headerRoutes).map((routeMap) => {
-				return (
-					<LinkComponent
-						key={routeMap[0]}
-						{...{
-							...props.linkStyle,
-							...css({
-								".active": {
-									color: theme.global.accent
-								}
-							})
-						}}
-						to={routeMap[1].route.path}
-					>
-						{routeMap[1].navigationDisplayName}
-					</LinkComponent>
-				);
-			})}
+			<>
+				{Object.entries(headerRoutes).map((routeMap) => {
+					return (
+						<LinkComponent
+							key={routeMap[0]}
+							{...{
+								...props.linkStyle,
+								...css({
+									".active": {
+										color: theme.global.accent
+									}
+								})
+							}}
+							to={routeMap[1].route.path}
+						>
+							{routeMap[1].navigationDisplayName}
+						</LinkComponent>
+					);
+				})}
+				{props.className === "footer-directory" && <FooterDirectory />}
+			</>
 		</div>
 	);
 };

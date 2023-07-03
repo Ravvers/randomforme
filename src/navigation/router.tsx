@@ -1,7 +1,7 @@
 import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import { About } from "../pages/About/About";
 import App from "../App";
-import { InPageDirectory } from "../components/InPageDirectory/InPageDirectory";
+import { RandomiseDirectory } from "../components/RandomiseDirectory/RandomiseDirectory";
 
 type RouteMap = {
 	navigationDisplayName: string;
@@ -9,7 +9,7 @@ type RouteMap = {
 };
 
 const getRedirectRouteToHome = (path: string) => {
-	return { path: path, element: <Navigate to="/randomise" replace /> };
+	return { path: path, element: <Navigate to="/randomise" /> };
 };
 
 export const inPageRoutes: Record<string, RouteMap> = {
@@ -34,12 +34,12 @@ export const headerRoutes: Record<string, RouteMap> = {
 		navigationDisplayName: "Randomise",
 		route: {
 			path: "/randomise",
-			element: <InPageDirectory />,
+			element: <RandomiseDirectory />,
 			children: [
 				inPageRoutes.generate.route,
 				inPageRoutes.group.route,
 				{
-					path: "",
+					index: true,
 					element: inPageRoutes.generate.route.element
 				}
 			]

@@ -9,6 +9,7 @@ body,
 	font-family: Mulish, sans-serif;
 	text-align: center;
 	overflow-x: hidden;
+	font-size: 1.2em;
 }
 
 a {
@@ -42,8 +43,10 @@ a {
 }
 
 .header-directory {
+	width: 30%;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-around;
+	align-items: center;
 }
 
 #header a {

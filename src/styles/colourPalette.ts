@@ -11,6 +11,12 @@ export const theme = {
 		background: colourPalette[60],
 		accent: colourPalette[5]
 	},
+	body: {
+		button: {
+			background: colourPalette[30],
+			active: colourPalette[5]
+		}
+	},
 	footer: {
 		background: colourPalette[30]
 	}
