@@ -1,6 +1,7 @@
 import { theme } from "../../styles/colourPalette";
 import { css } from "glamor";
 import { Directory } from "../Directory/Directory";
+import { Link } from "react-router-dom";
 
 const linkStyles = css({
 	marginRight: 30,
@@ -21,15 +22,17 @@ export const Header = () => {
 					alignItems: "center"
 				}}
 			>
-				<img
-					src="/logo.svg"
-					alt="logo"
-					style={{
-						maxHeight: "42px",
-						maxWidth: "42px",
-						marginLeft: "30px"
-					}}
-				/>
+				<Link key={"logo"} to={"randomise"}>
+					<img
+						src="/logo.svg"
+						alt="logo"
+						style={{
+							maxHeight: "42px",
+							maxWidth: "42px",
+							marginLeft: "30px"
+						}}
+					/>
+				</Link>
 			</div>
 			<div style={{ width: "40%", alignItems: "center" }}>
 				<h1 style={{ margin: 0 }}>Random For Me</h1>

@@ -23,7 +23,7 @@ export const InPageDirectory = () => {
 				aria-label="Platform"
 			>
 				<ToggleButton value="generate">
-					<Link key={"generate"} to={"generate"} replace={true}>
+					<Link key={"generate"} to={"generate"}>
 						Generate
 					</Link>
 				</ToggleButton>
