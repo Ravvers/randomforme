@@ -6,6 +6,6 @@ import { router } from "./navigation/router.tsx";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
 	<React.StrictMode>
-		<RouterProvider router={router}></RouterProvider>
+		<RouterProvider router={router} />
 	</React.StrictMode>
 );
