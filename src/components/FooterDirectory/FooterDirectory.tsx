@@ -15,8 +15,8 @@ export const FooterDirectory = (props: DirectoryProps) => {
 			role="navigation"
 			aria-label={props.className}
 			style={{
-				width: "30%",
 				display: "flex",
+				flexDirection: "column",
 				justifyContent: "space-around",
 				alignItems: "center"
 			}}
@@ -33,7 +33,7 @@ export const FooterDirectory = (props: DirectoryProps) => {
 								}
 							})
 						}}
-						to={routeMap[1].route.path}
+						to={"/randomise/" + routeMap[1].route.path}
 					>
 						{routeMap[1].navigationDisplayName}
 					</Link>

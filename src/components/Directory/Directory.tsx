@@ -3,6 +3,7 @@ import { headerRoutes } from "../../navigation/router";
 import { StyleAttribute, css } from "glamor";
 import { theme } from "../../styles/colourPalette";
 import { FooterDirectory } from "../FooterDirectory/FooterDirectory";
+import React from "react";
 
 type DirectoryProps = {
 	linkStyle?: StyleAttribute;
@@ -21,23 +22,28 @@ export const Directory = (props: DirectoryProps) => {
 			<>
 				{Object.entries(headerRoutes).map((routeMap) => {
 					return (
-						<LinkComponent
-							key={routeMap[0]}
-							{...{
-								...props.linkStyle,
-								...css({
-									".active": {
-										color: theme.global.accent
-									}
-								})
-							}}
-							to={routeMap[1].route.path}
-						>
-							{routeMap[1].navigationDisplayName}
-						</LinkComponent>
+						<React.Fragment key={routeMap[0]}>
+							<LinkComponent
+								{...{
+									...props.linkStyle,
+									...css({
+										".active": {
+											color: theme.global.accent
+										}
+									})
+								}}
+								to={routeMap[1].route.path}
+							>
+								{routeMap[1].navigationDisplayName}
+							</LinkComponent>
+							{routeMap[1].navigationDisplayName ===
+								"Randomise" &&
+								props.className === "footer-directory" && (
+									<FooterDirectory />
+								)}
+						</React.Fragment>
 					);
 				})}
-				{props.className === "footer-directory" && <FooterDirectory />}
 			</>
 		</div>
 	);

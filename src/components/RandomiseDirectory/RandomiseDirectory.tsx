@@ -1,13 +1,25 @@
 import * as React from "react";
 import MuiToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { theme } from "../../styles/colourPalette";
 import { styled } from "@mui/material";
-// import { css } from "glamor";
+import { inPageRoutes } from "../../navigation/router";
 
 export const RandomiseDirectory = () => {
-	const [randomiseType, setRandomiseType] = React.useState("generate");
+	const [randomiseType, setRandomiseType] = React.useState("");
+	const location = useLocation();
+
+	React.useEffect(() => {
+		const currentRoute = location.pathname.substring(
+			location.pathname.lastIndexOf("/") + 1
+		);
+		if (currentRoute === "generate" || currentRoute === "group") {
+			setRandomiseType(currentRoute);
+		} else {
+			setRandomiseType("generate");
+		}
+	}, [location.pathname]);
 
 	const navigate = useNavigate();
 
@@ -45,9 +57,16 @@ export const RandomiseDirectory = () => {
 				aria-label="Randomise Type"
 				sx={{ backgroundColor: theme.body.button.background }}
 			>
-				<ToggleButton value="generate">Generate</ToggleButton>
-
-				<ToggleButton value="group">Group</ToggleButton>
+				{Object.values(inPageRoutes).map((routeMap) => {
+					return (
+						<ToggleButton
+							key={routeMap.navigationDisplayName}
+							value={routeMap.route.path}
+						>
+							{routeMap.navigationDisplayName}
+						</ToggleButton>
+					);
+				})}
 			</ToggleButtonGroup>
 			<Outlet />
 		</>
