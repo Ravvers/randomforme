@@ -3,6 +3,7 @@ import { css } from "glamor";
 import { Directory } from "../Directory/Directory";
 
 const linkStyles = css({
+	marginRight: 30,
 	":hover": {
 		color: theme.global.accent,
 		transition: "0.5s"
@@ -17,14 +18,17 @@ export const Header = () => {
 					width: "30%",
 					display: "flex",
 					justifyContent: "flex-start",
-					alignItems: "center",
-					marginLeft: 30
+					alignItems: "center"
 				}}
 			>
 				<img
 					src="/logo.svg"
 					alt="logo"
-					style={{ maxHeight: "48px", maxWidth: "48px" }}
+					style={{
+						maxHeight: "42px",
+						maxWidth: "42px",
+						marginLeft: "30px"
+					}}
 				/>
 			</div>
 			<div style={{ width: "40%", alignItems: "center" }}>

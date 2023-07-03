@@ -13,7 +13,7 @@ function App() {
 				minHeight: "100vh",
 				display: "flex",
 				flexDirection: "column",
-				paddingTop: "35px"
+				paddingTop: "15px"
 			}}
 		>
 			<Header />
