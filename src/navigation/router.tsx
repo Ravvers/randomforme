@@ -5,6 +5,7 @@ import { RandomiseDirectory } from "../components/RandomiseDirectory/RandomiseDi
 
 type RouteMap = {
 	navigationDisplayName: string;
+	parentRoutePath?: string;
 	route: RouteObject & { path: string };
 };
 
@@ -15,6 +16,7 @@ const getRedirectRouteToHome = (path: string) => {
 export const inPageRoutes: Record<string, RouteMap> = {
 	generate: {
 		navigationDisplayName: "Generate",
+		parentRoutePath: "/randomise/",
 		route: {
 			path: "generate",
 			element: <h1>Generate</h1>
@@ -22,6 +24,7 @@ export const inPageRoutes: Record<string, RouteMap> = {
 	},
 	group: {
 		navigationDisplayName: "Group",
+		parentRoutePath: "/randomise/",
 		route: {
 			path: "group",
 			element: <h1>Group</h1>

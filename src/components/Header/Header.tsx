@@ -18,7 +18,7 @@ export const Header = () => {
 					<img id="logo" src="/logo.svg" alt="logo" />
 				</Link>
 			</div>
-			<div style={{ width: "40%", alignItems: "center" }}>
+			<div id="title-container">
 				<Link to={"randomise"}>
 					<h1 className="title">Random For Me</h1>
 				</Link>

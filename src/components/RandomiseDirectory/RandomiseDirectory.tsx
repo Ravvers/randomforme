@@ -40,7 +40,7 @@ export const RandomiseDirectory = () => {
 			fontSize: "1.1em"
 		},
 		"&.Mui-selected": {
-			backgroundColor: "rgb(55 54 52)"
+			backgroundColor: theme.global.shadow
 		},
 		"&.Mui-selected, &.Mui-selected:hover": {
 			color: theme.body.button.active

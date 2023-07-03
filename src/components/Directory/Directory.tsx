@@ -22,20 +22,24 @@ export const Directory = (props: DirectoryProps) => {
 			{Object.entries(headerRoutes).map((routeMap) => {
 				return (
 					<React.Fragment key={routeMap[0]}>
-						<LinkComponent
-							{...{
-								...props.linkStyle,
-								...css({
-									".active": {
-										color: theme.global.accent
-									}
-								})
-							}}
-							to={routeMap[1].route.path}
-						>
-							{routeMap[1].navigationDisplayName}
-						</LinkComponent>
-						{routeMap[1].navigationDisplayName === "Randomise" &&
+						{((props.className === "footer-directory" &&
+							routeMap[1].route.path !== "/randomise") ||
+							props.className === "header-directory") && (
+							<LinkComponent
+								{...{
+									...props.linkStyle,
+									...css({
+										".active": {
+											color: theme.global.accent
+										}
+									})
+								}}
+								to={routeMap[1].route.path}
+							>
+								{routeMap[1].navigationDisplayName}
+							</LinkComponent>
+						)}
+						{routeMap[1].route.path === "/randomise" &&
 							props.className === "footer-directory" && (
 								<FooterInPageDirectory />
 							)}

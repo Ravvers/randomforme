@@ -7,13 +7,10 @@ import { PageContent } from "./components/PageContent/PageContent";
 function App() {
 	return (
 		<div
+			id="app"
 			style={{
 				background: theme.global.background,
-				color: theme.global.text,
-				minHeight: "100vh",
-				display: "flex",
-				flexDirection: "column",
-				paddingTop: "15px"
+				color: theme.global.text
 			}}
 		>
 			<Header />
