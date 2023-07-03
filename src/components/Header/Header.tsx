@@ -35,7 +35,9 @@ export const Header = () => {
 				</Link>
 			</div>
 			<div style={{ width: "40%", alignItems: "center" }}>
-				<h1 style={{ margin: 0 }}>Random For Me</h1>
+				<Link key={"logo"} to={"randomise"}>
+					<h1 style={{ margin: 0 }}>Random For Me</h1>
+				</Link>
 			</div>
 
 			<Directory className="header-directory" linkStyle={linkStyles} />
