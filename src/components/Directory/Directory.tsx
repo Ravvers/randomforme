@@ -16,6 +16,12 @@ export const Directory = (props: DirectoryProps) => {
 			className={props.className}
 			role="navigation"
 			aria-label={props.className}
+			style={{
+				width: "30%",
+				display: "flex",
+				justifyContent: "space-around",
+				alignItems: "center"
+			}}
 		>
 			{Object.entries(headerRoutes).map((routeMap) => {
 				return (

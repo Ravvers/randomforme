@@ -12,12 +12,13 @@ function App() {
 				color: theme.global.text,
 				minHeight: "100vh",
 				display: "flex",
-				flexDirection: "column"
+				flexDirection: "column",
+				paddingTop: "35px"
 			}}
 		>
 			<Header />
 			<PageContent>
-				<Outlet></Outlet>
+				<Outlet />
 			</PageContent>
 			<Footer />
 		</div>

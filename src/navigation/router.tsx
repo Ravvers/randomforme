@@ -3,53 +3,50 @@ import { About } from "../pages/About/About";
 import App from "../App";
 import { InPageDirectory } from "../components/InPageDirectory/InPageDirectory";
 
-type RouteMapHeader = {
+type RouteMap = {
 	navigationDisplayName: string;
-	section: "Header";
 	route: RouteObject & { path: string };
 };
 
-type RouteMapInPage = {
-	navigationDisplayName: string;
-	section: "In Page";
-	parentPage: keyof { [k: string]: RouteMapHeader };
-	route: RouteObject & { path: string };
+const getRedirectRouteToHome = (path: string) => {
+	return { path: path, element: <Navigate to="/randomise" replace /> };
 };
 
-export const inPageRoutes: Record<string, RouteMapInPage> = {
+export const inPageRoutes: Record<string, RouteMap> = {
 	generate: {
 		navigationDisplayName: "Generate",
-		section: "In Page",
-		parentPage: "Randomise",
 		route: {
-			path: "/generate",
-			element: <About />
+			path: "generate",
+			element: <h1>Generate</h1>
 		}
 	},
 	group: {
 		navigationDisplayName: "Group",
-		section: "In Page",
-		parentPage: "Randomise",
 		route: {
-			path: "/group",
-			element: <About />
+			path: "group",
+			element: <h1>Group</h1>
 		}
 	}
 };
 
-export const headerRoutes: Record<string, RouteMapHeader> = {
+export const headerRoutes: Record<string, RouteMap> = {
 	directory: {
 		navigationDisplayName: "Randomise",
-		section: "Header",
 		route: {
-			path: "/",
+			path: "/randomise",
 			element: <InPageDirectory />,
-			children: [inPageRoutes.generate.route, inPageRoutes.group.route]
+			children: [
+				inPageRoutes.generate.route,
+				inPageRoutes.group.route,
+				{
+					path: "",
+					element: inPageRoutes.generate.route.element
+				}
+			]
 		}
 	},
 	about: {
 		navigationDisplayName: "About",
-		section: "Header",
 		route: {
 			path: "/about",
 			element: <About />
@@ -61,7 +58,12 @@ export const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <App />,
-		children: [headerRoutes.directory.route, headerRoutes.about.route]
+		children: [
+			headerRoutes.about.route,
+			headerRoutes.directory.route,
+			getRedirectRouteToHome(""),
+			getRedirectRouteToHome("*")
+		]
 	},
-	{ path: "*", element: <Navigate to="/" replace /> }
+	getRedirectRouteToHome("*")
 ]);
