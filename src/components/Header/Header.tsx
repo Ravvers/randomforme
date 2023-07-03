@@ -4,7 +4,6 @@ import { Directory } from "../Directory/Directory";
 import { Link } from "react-router-dom";
 
 const linkStyles = css({
-	marginRight: 30,
 	":hover": {
 		color: theme.global.accent,
 		transition: "0.5s"
@@ -14,29 +13,14 @@ const linkStyles = css({
 export const Header = () => {
 	return (
 		<div id="header">
-			<div
-				style={{
-					width: "30%",
-					display: "flex",
-					justifyContent: "flex-start",
-					alignItems: "center"
-				}}
-			>
-				<Link key={"logo"} to={"randomise"}>
-					<img
-						src="/logo.svg"
-						alt="logo"
-						style={{
-							maxHeight: "42px",
-							maxWidth: "42px",
-							marginLeft: "30px"
-						}}
-					/>
+			<div id="logo-container">
+				<Link to={"randomise"}>
+					<img id="logo" src="/logo.svg" alt="logo" />
 				</Link>
 			</div>
 			<div style={{ width: "40%", alignItems: "center" }}>
-				<Link key={"logo"} to={"randomise"}>
-					<h1 style={{ margin: 0 }}>Random For Me</h1>
+				<Link to={"randomise"}>
+					<h1 className="title">Random For Me</h1>
 				</Link>
 			</div>
 

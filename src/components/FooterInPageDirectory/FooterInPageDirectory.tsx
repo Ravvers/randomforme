@@ -8,7 +8,7 @@ type DirectoryProps = {
 	className?: string;
 };
 
-export const FooterDirectory = (props: DirectoryProps) => {
+export const FooterInPageDirectory = (props: DirectoryProps) => {
 	return (
 		<div
 			className={props.className}

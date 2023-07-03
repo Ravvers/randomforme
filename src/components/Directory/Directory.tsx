@@ -2,7 +2,7 @@ import { Link, NavLink } from "react-router-dom";
 import { headerRoutes } from "../../navigation/router";
 import { StyleAttribute, css } from "glamor";
 import { theme } from "../../styles/colourPalette";
-import { FooterDirectory } from "../FooterDirectory/FooterDirectory";
+import { FooterInPageDirectory } from "../FooterInPageDirectory/FooterInPageDirectory";
 import React from "react";
 
 type DirectoryProps = {
@@ -19,32 +19,29 @@ export const Directory = (props: DirectoryProps) => {
 			role="navigation"
 			aria-label={props.className}
 		>
-			<>
-				{Object.entries(headerRoutes).map((routeMap) => {
-					return (
-						<React.Fragment key={routeMap[0]}>
-							<LinkComponent
-								{...{
-									...props.linkStyle,
-									...css({
-										".active": {
-											color: theme.global.accent
-										}
-									})
-								}}
-								to={routeMap[1].route.path}
-							>
-								{routeMap[1].navigationDisplayName}
-							</LinkComponent>
-							{routeMap[1].navigationDisplayName ===
-								"Randomise" &&
-								props.className === "footer-directory" && (
-									<FooterDirectory />
-								)}
-						</React.Fragment>
-					);
-				})}
-			</>
+			{Object.entries(headerRoutes).map((routeMap) => {
+				return (
+					<React.Fragment key={routeMap[0]}>
+						<LinkComponent
+							{...{
+								...props.linkStyle,
+								...css({
+									".active": {
+										color: theme.global.accent
+									}
+								})
+							}}
+							to={routeMap[1].route.path}
+						>
+							{routeMap[1].navigationDisplayName}
+						</LinkComponent>
+						{routeMap[1].navigationDisplayName === "Randomise" &&
+							props.className === "footer-directory" && (
+								<FooterInPageDirectory />
+							)}
+					</React.Fragment>
+				);
+			})}
 		</div>
 	);
 };
