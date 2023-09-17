@@ -2,6 +2,7 @@ import { Navigate, RouteObject, createBrowserRouter } from "react-router-dom";
 import { About } from "../pages/About/About";
 import App from "../App";
 import { RandomiseDirectory } from "../components/RandomiseDirectory/RandomiseDirectory";
+import { Generate } from "../pages/Randomise/Generate/Generate";
 
 type RouteMap = {
 	navigationDisplayName: string;
@@ -19,7 +20,7 @@ export const inPageRoutes: Record<string, RouteMap> = {
 		parentRoutePath: "/randomise/",
 		route: {
 			path: "generate",
-			element: <h1>Generate</h1>
+			element: <Generate />
 		}
 	},
 	group: {
@@ -40,7 +41,8 @@ export const headerRoutes: Record<string, RouteMap> = {
 			element: <RandomiseDirectory />,
 			children: [
 				inPageRoutes.generate.route,
-				inPageRoutes.group.route,
+				//uncomment when group is implemented
+				// inPageRoutes.group.route,
 				{
 					index: true,
 					element: inPageRoutes.generate.route.element

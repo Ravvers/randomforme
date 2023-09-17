@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import MuiToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
@@ -7,10 +7,10 @@ import { styled } from "@mui/material";
 import { inPageRoutes } from "../../navigation/router";
 
 export const RandomiseDirectory = () => {
-	const [randomiseType, setRandomiseType] = React.useState("");
+	const [randomiseType, setRandomiseType] = useState("");
 	const location = useLocation();
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const currentRoute = location.pathname.substring(
 			location.pathname.lastIndexOf("/") + 1
 		);
@@ -62,6 +62,15 @@ export const RandomiseDirectory = () => {
 						<ToggleButton
 							key={routeMap.navigationDisplayName}
 							value={routeMap.route.path}
+							disabled={
+								routeMap.navigationDisplayName === "Group"
+							}
+							style={{
+								opacity:
+									routeMap.navigationDisplayName === "Group"
+										? 0.2
+										: 1
+							}}
 						>
 							{routeMap.navigationDisplayName}
 						</ToggleButton>
