@@ -2,14 +2,18 @@ import { Button, TextField } from "@mui/material";
 import { PageContent } from "../../../components/PageContent/PageContent";
 import { ChangeEvent, useState } from "react";
 import { generateRandomIntegers } from "../../../randomise/randomise";
+import { ValidationError, ok } from "../../../Common/Errors";
 
 export const Generate = () => {
 	function generateNumbersAndDisplay(): void {
-		const generatedNumbers: number[] = generateRandomIntegers({
-			quantity: quantity,
-			range: { min: minimum, max: maximum }
-		});
-		setGeneratedNumbers(generatedNumbers);
+		const generatedNumbers: number[] | ValidationError =
+			generateRandomIntegers({
+				quantity: quantity,
+				range: { min: minimum, max: maximum }
+			});
+		if (ok(generatedNumbers)) {
+			setGeneratedNumbers(generatedNumbers);
+		}
 	}
 
 	function handleInputChange(
